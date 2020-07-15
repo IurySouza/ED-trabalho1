@@ -1,36 +1,43 @@
 #ifndef _H_STRUCT
 #define _H_STRUCT
 
-typedef struct Rect {
+typedef struct rect {
     float x, y, width, height;
     char borderC[20];
     char fillC[20];
-} rect;
+} Rect;
 
-typedef struct Circ {
+typedef struct circ {
     float x, y, radius;
     char borderC[20];
     char fillC[20];
-} circ;
+} Circ;
 
-typedef struct Tex {
-    float x, y;
-    char text[255];
+typedef struct line {
+    float x1, y1, x2, y2;
     char borderC[20];
     char fillC[20];
-} tex;
+} Line;
 
-typedef union Shape {
-    rect rectangle;
-    circ circle;
-    tex text;
+typedef struct tex {
+    float x, y;
+    char *msg;
+    char borderC[20];
+    char fillC[20];
+} Tex;
+
+typedef union shape {
+    Rect rectangle;
+    Circ circle;
+    Line line;
+    Tex text;
 } Shape;
 
-typedef struct Node {
+typedef struct node {
     char type;
     int id;
-    Shape* shape;
-    struct Node* next;
-} node;
+    Shape *shape;
+    struct node *next;
+} Node;
 
 #endif
