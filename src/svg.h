@@ -1,16 +1,15 @@
 #ifndef _H_SVG
 #define _H_SVG
+#include "struct.h"
 
-void startSVG(char pathSVG[]);
+void drawCircle(FILE* svg, float x, float y, float radius, char borderC[], char fillC[]);
 
-void endSVG(char pathSVG[]);
+void drawRectangle(FILE* svg, float x, float y, float width, float height, char borderC[], char fillC[]);
 
-void drawCircle(char pathSVG[], float x, float y, float radius, char borderC[], char fillC[]);
+void drawLine(FILE* svg, float x1, float y1, float x2, float y2, char fillC[]);
 
-void drawRectangle(char pathSVG[], float x, float y, float width, float height, char borderC[], char fillC[]);
+void drawText(FILE* svg, float x, float y, char borderC[], char fillC[], char text[]);
 
-void drawLine(char pathSVG[], float x1, float y1, float x2, float y2, char borderC[], char fillC[]);
-
-char drawText(char pathSVG[], float x, float y, char borderC[], char fillC[], char text[]);
+void drawSvg(Node *head, char svgGeo[]);
 
 #endif

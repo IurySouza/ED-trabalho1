@@ -15,7 +15,6 @@ typedef struct circ {
 
 typedef struct line {
     float x1, y1, x2, y2;
-    char borderC[20];
     char fillC[20];
 } Line;
 

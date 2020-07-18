@@ -37,7 +37,6 @@ Node *addCircle(Node *head, int id, char type, float x, float y, float radius, c
     new->shape->circle.radius = radius;
     strcpy(new->shape->circle.borderC, borderC);
     strcpy(new->shape->circle.fillC, fillC);
-    printf("\ncircle: %ld %ld", sizeof(new), sizeof(head));
     return head;
 }
 
@@ -105,7 +104,6 @@ Node *addLine(Node *head, int id, char type, float x1, float y1, float x2, float
     new->shape->line.y1 = y1;
     new->shape->line.x2 = x2;
     new->shape->line.y2 = y2;
-    strcpy(new->shape->line.borderC, borderC);
     strcpy(new->shape->line.fillC, fillC);
     return head;
 }
@@ -180,6 +178,17 @@ Node *deleteElement(Node *head, int id) {
         printf("\nO elemento de id %d foi deletado com sucesso.", id);
         return head;
     }
+}
+
+Node *search(Node *head, int id) {
+    Node *aux = head;
+    while(aux != NULL) {
+        if (aux->id == id) {
+            return aux;
+        }
+        aux = aux->next;
+    }
+    return NULL;
 }
 
 void printList(Node *head) {

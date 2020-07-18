@@ -16,6 +16,8 @@ Node *deleteElement(Node *head, int id);
 
 Node *search(Node *head, int id);
 
+Node *search(Node *head, int id);
+
 void printList(Node *head);
 
 void deleteList(Node *head);
