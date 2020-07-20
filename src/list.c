@@ -71,11 +71,10 @@ Node *addRectangle(Node *head, int id, char type, float x, float y, float width,
     new->shape->rectangle.height = height;
     strcpy(new->shape->rectangle.borderC, borderC);
     strcpy(new->shape->rectangle.fillC, fillC);
-    printf("\nrect: %ld %ld", sizeof(new), sizeof(head));
     return head;
 }
 
-Node *addLine(Node *head, int id, char type, float x1, float y1, float x2, float y2, char borderC[], char fillC[]) {
+Node *addLine(Node *head, int id, char type, float x1, float y1, float x2, float y2, char fillC[]) {
     Node *new, *aux;
     if (head == NULL) {
         head = (Node*) malloc(sizeof(Node));

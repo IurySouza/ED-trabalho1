@@ -20,6 +20,8 @@ void manager(char paramEntryPath[], char paramGeoName[], char paramOutPath[], ch
     char *filename = NULL;
     char *outPath = NULL;           // Esta variável possui o nome do arquivo sem extensão
     char *svgGeo = NULL;
+    char *qryFilename = NULL;
+    char *qryNoExtention = NULL;
     if (paramEntryPath) {
         if (paramEntryPath[strlen(paramEntryPath) - 1] != '/') {
             entryPathGeo = (char*) malloc((strlen(paramEntryPath) + strlen(paramGeoName) + 2) * sizeof(char));
@@ -53,13 +55,20 @@ void manager(char paramEntryPath[], char paramGeoName[], char paramOutPath[], ch
 
     svgGeo = (char*) malloc((strlen(outPath) + 5) * sizeof(char));
     sprintf(svgGeo, "%s.svg", outPath);
-    printf("%s\n", svgGeo);
 
     figList = readGeo(entryPathGeo, svgGeo);
+
+    if (entryPathQry) {
+        qryFilename = getFileName(paramQryName);
+        qryNoExtention = (char*) malloc((strlen(outPath) + strlen(qryFilename) + 2) * sizeof(char));
+        sprintf(qryNoExtention, "%s-%s", outPath, qryFilename);
+        figList = readQry(figList, entryPathQry, qryNoExtention);
+        free(qryNoExtention);
+        free(entryPathQry);
+    }
 
     free(entryPathGeo);
     free(outPath);
     free(svgGeo);
-    if (entryPathQry) free(entryPathQry);
     deleteList(figList);
 }

@@ -20,11 +20,15 @@ void drawText(FILE* svg, float x, float y, char text[], char fillC[], char borde
     fprintf(svg, "\t<text x=\"%f\" y=\"%f\" stroke=\"%s\" stroke-width=\"0.3\" fill=\"%s\">%s</text>\n", x, y, borderC, fillC, text);
 }
 
+void drawDashedRectangle(FILE* svg, float x, float y, float width, float height, char color[]) {
+    fprintf(svg, "\t<rect x=\"%f\" y=\"%f\" width=\"%f\" height=\"%f\" fill=\"transparent\" stroke=\"%s\" stroke-width =\"1\" stroke-dasharray=\"1\" />\n", x, y, width, height, color);
+}
+
 void drawSvg(Node *head, char svgGeo[]) {
     Node *aux = head;
     FILE *svg = fopen(svgGeo, "w");
     if (svg == NULL) {
-        printf("Ocorreu um erro.\n");
+        printf("Ocorreu um erro ao abrir o arquivo SVG.\n");
         exit(1);
     }
     fprintf(svg, "<svg>\n");
@@ -39,6 +43,12 @@ void drawSvg(Node *head, char svgGeo[]) {
             break;
         case 't':
             drawText(svg, aux->shape->text.x, aux->shape->text.y, aux->shape->text.msg, aux->shape->text.fillC, aux->shape->text.borderC);
+            break;
+        case 'l':
+            drawLine(svg, aux->shape->line.x1, aux->shape->line.y1, aux->shape->line.x2, aux->shape->line.y2, aux->shape->line.fillC);
+            break;
+        case 'o':
+            drawDashedRectangle(svg, aux->shape->rectangle.x, aux->shape->rectangle.y, aux->shape->rectangle.width, aux->shape->rectangle.height, aux->shape->rectangle.fillC);
             break;
         }
         aux = aux->next;

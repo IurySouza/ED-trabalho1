@@ -3,26 +3,26 @@
 
 typedef struct rect {
     float x, y, width, height;
-    char borderC[20];
-    char fillC[20];
+    char borderC[30];
+    char fillC[30];
 } Rect;
 
 typedef struct circ {
     float x, y, radius;
-    char borderC[20];
-    char fillC[20];
+    char borderC[30];
+    char fillC[30];
 } Circ;
 
 typedef struct line {
     float x1, y1, x2, y2;
-    char fillC[20];
+    char fillC[30];
 } Line;
 
 typedef struct tex {
     float x, y;
     char *msg;
-    char borderC[20];
-    char fillC[20];
+    char borderC[30];
+    char fillC[30];
 } Tex;
 
 typedef union shape {

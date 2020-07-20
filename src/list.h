@@ -8,7 +8,7 @@ Node *addCircle(Node *head, int id, char type, float x, float y, float radius, c
 
 Node *addRectangle(Node *head, int id, char type, float x, float y, float width, float height, char borderC[], char fillC[]);
 
-Node *addLine(Node *head, int id, char type, float x1, float y1, float x2, float y2, char borderC[], char fillC[]);
+Node *addLine(Node *head, int id, char type, float x1, float y1, float x2, float y2, char fillC[]);
 
 Node *addText(Node *head, int id, char type, float x, float y, char text[], char borderC[], char fillC[]);
 

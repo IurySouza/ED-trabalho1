@@ -10,6 +10,8 @@ void drawLine(FILE* svg, float x1, float y1, float x2, float y2, char fillC[]);
 
 void drawText(FILE* svg, float x, float y, char borderC[], char fillC[], char text[]);
 
+void drawDashedRectangle(FILE* svg, float x, float y, float width, float height, char color[]);
+
 void drawSvg(Node *head, char svgGeo[]);
 
 #endif
